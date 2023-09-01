@@ -1,11 +1,27 @@
-import { TouchableOpacity, Text } from "react-native";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+import { TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 
-const MyButton = () => {
+const MyButton = (props: any) => {
     return (
-        <TouchableOpacity>
-            <Text style={{ fontSize: 24 }}>My Button</Text>
+        <TouchableOpacity
+            style={styles.button}
+            onPress={props.onPress}
+        >
+            <Text style={{ fontSize: 24 }}>{props.children || props.title}</Text>
         </TouchableOpacity>
     )
 }
 
+MyButton.defaultProps = {
+    title: 'Button'
+}
+
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: 'skyblue',
+        padding: 16,
+        margin: 10,
+        borderRadius: 8,
+    }
+})
 export default MyButton;
